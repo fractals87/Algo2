@@ -228,7 +228,7 @@ public class AdjListUndir implements Graph{
 		return forest;
 	}
 	
-	public void VisitDFS(VisitForest forest,int startingVertex) {
+	private void VisitDFS(VisitForest forest,int startingVertex) {
 		LinkedList<Integer> frangia=new LinkedList<Integer>();
 		Integer[] arrTop=new Integer[this.size()];
 				
