@@ -13,7 +13,7 @@ import upo.graph.base.VisitForest.VisitType;
 /**
  * Implementazione mediante <strong>liste di adiacenza</strong> di un grafo <strong>non orientato pesato</strong>.
  * 
- * @author Nome Cognome Matricola
+ * @author Paolo Franzini 20018562
  *
  */
 
@@ -327,14 +327,12 @@ public class AdjListUndirWeight implements WeightedGraph{
 
 	@Override
 	public int[] topologicalSort() throws UnsupportedOperationException {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Set<Set<Integer>> stronglyConnectedComponents() throws UnsupportedOperationException {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -380,17 +378,32 @@ public class AdjListUndirWeight implements WeightedGraph{
 	}
 	
 	@Override
-	public double getEdgeWeight(int sourceVertexIndex, int targetVertexIndex)
-			throws IllegalArgumentException, NoSuchElementException {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getEdgeWeight(int sourceVertexIndex, int targetVertexIndex) throws IllegalArgumentException, NoSuchElementException {
+		if(containsVertex(sourceVertexIndex)==false || containsVertex(targetVertexIndex)==false) 
+			 throw new IllegalArgumentException();
+		for(Edge v : vertexList.get(sourceVertexIndex)) {
+			if(v.vertex == targetVertexIndex)
+				return v.weight;
+		}
+		throw new NoSuchElementException();
 	}
 
 	@Override
-	public void setEdgeWeight(int sourceVertexIndex, int targetVertexIndex, double weight)
-			throws IllegalArgumentException, NoSuchElementException {
-		// TODO Auto-generated method stub
-		
+	public void setEdgeWeight(int sourceVertexIndex, int targetVertexIndex, double weight) throws IllegalArgumentException, NoSuchElementException {
+		if(containsVertex(sourceVertexIndex)==false || containsVertex(targetVertexIndex)==false) 
+			 throw new IllegalArgumentException();
+		for(Edge v : vertexList.get(sourceVertexIndex)) {
+			if(v.vertex == targetVertexIndex) {
+				v.weight = weight;
+				for(Edge v2 : vertexList.get(targetVertexIndex)) {
+					if(v2.vertex == sourceVertexIndex) {
+						v2.weight = weight;
+						return;
+					}
+				}
+			}
+		}
+		throw new NoSuchElementException();		
 	}
 
 	@Override

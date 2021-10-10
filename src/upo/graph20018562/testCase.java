@@ -251,9 +251,9 @@ public class testCase {
 		
 		for(Set<Integer> component : connectedComponents){
 			for(Integer index : component) {
-				//System.out.print(index + "-");		
+				System.out.print(index + "-");		
 			}
-			//System.out.print("\n");		
+			System.out.print("\n");		
 		}
 		/*
 		System.out.print("Atteso\n");

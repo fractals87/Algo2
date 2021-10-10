@@ -249,7 +249,7 @@ public class testCaseWeight {
 		
 		for(Set<Integer> component : connectedComponents){
 			for(Integer index : component) {
-				//System.out.print(index + "-");		
+				System.out.print(index + "-");		
 			}
 			//System.out.print("\n");		
 		}
@@ -258,6 +258,25 @@ public class testCaseWeight {
 		//System.out.print("0-1-2\n");
 		//System.out.print("3-4-\n");	
 		//System.out.print("5-6-\n");	
+	}
+	
+	@Test
+	public void testSetGetEdgeWeight() {
+		AdjListUndirWeight adjListUndirWeight = new AdjListUndirWeight();
+		adjListUndirWeight.addVertex();
+		adjListUndirWeight.addVertex();
+		adjListUndirWeight.addVertex();	
+		adjListUndirWeight.addEdge(0, 1);
+		adjListUndirWeight.addEdge(1, 2);
+		adjListUndirWeight.addEdge(2, 0);
+
+		adjListUndirWeight.setEdgeWeight(0, 1, 5);
+		adjListUndirWeight.setEdgeWeight(1, 2, 7);
+		adjListUndirWeight.setEdgeWeight(2, 0, 9);				
+		
+		assertEquals(5,adjListUndirWeight.getEdgeWeight(0, 1),0);
+		assertEquals(7,adjListUndirWeight.getEdgeWeight(1, 2),0);
+		assertEquals(9,adjListUndirWeight.getEdgeWeight(2, 0),0);
 	}
 	
 	@Test

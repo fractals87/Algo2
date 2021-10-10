@@ -213,6 +213,7 @@ public class AdjListUndir implements Graph{
 
 	@Override
 	public VisitForest getDFSTOTForest(int startingVertex) throws UnsupportedOperationException, IllegalArgumentException {
+		if(this.containsVertex(startingVertex)==false) throw new IllegalArgumentException();
 		VisitForest forest=new VisitForest(this, VisitType.DFS_TOT);
 		for(int i=0; i<this.size(); i++) {
 			if(forest.getColor(i)==Color.WHITE) {
